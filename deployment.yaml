@@ -26,7 +26,7 @@ spec:
           # - Each init container must complete successfully before the next one starts.
       containers:
       - name:  tomcat
-        image:  201734534261.dkr.ecr.eu-west-2.amazonaws.com/ecr-sai:1
+        image:  https://github.com/bitnami/containers.git
         resources:
           requests:
             cpu: 100m

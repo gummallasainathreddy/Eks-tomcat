@@ -1,19 +1,36 @@
 # https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
 
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+#  name: tomcat-ingress
+ ## namespace: sample
+#spec:
+ # rules:
+  #- host: 
+   # http:
+    #  paths:
+     # - path: /
+      ## backend:
+        #  service:
+         #   name: tomcat-service
+          #  port:
+           #   number: 80
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: tomcat-ingress
-  namespace: sample
+  name: minimal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx-example
   rules:
-  - host: 
-    http:
+  - http:
       paths:
-      - path: /
+      - path: /testpath
         pathType: Prefix
         backend:
           service:
-            name: tomcat-service
+            name: test
             port:
               number: 80
